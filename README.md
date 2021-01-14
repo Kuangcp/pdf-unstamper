@@ -94,6 +94,9 @@ Make sure you have `wget` installed.
 ```
 
 ### *As a JAR*
+
+mvn package 
+
 #### *Download*
 Get [*pdf-unstamper.jar*](https://github.com/hwding/pdf-unstamper/releases).
 #### *Run*
