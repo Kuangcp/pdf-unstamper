@@ -8,7 +8,6 @@
 package com.amastigote.unstamper.core;
 
 import com.amastigote.unstamper.log.GeneralLogger;
-import com.sun.istack.internal.NotNull;
 import org.apache.pdfbox.contentstream.operator.Operator;
 import org.apache.pdfbox.cos.COSArray;
 import org.apache.pdfbox.cos.COSName;
@@ -42,10 +41,10 @@ public class Processor {
     private static final String END_MARKED_CONTENT = "EMC";
 
     public static void process(
-            @NotNull File file,
-            @NotNull String[] strings,
-            @NotNull boolean useStrict,
-            @NotNull boolean removeAnnotations) {
+            File file,
+            String[] strings,
+            boolean useStrict,
+            boolean removeAnnotations) {
         GeneralLogger.Processor.procInProgress(file.getName());
 
         try {

@@ -7,7 +7,6 @@
  */
 package com.amastigote.unstamper.core;
 
-import com.sun.istack.internal.NotNull;
 import org.apache.pdfbox.pdmodel.font.PDCIDFontType0;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType0Font;
@@ -19,10 +18,10 @@ import java.util.Set;
 class TextStampRecognizer {
 
     private static boolean recognizeWithFont(
-            @NotNull String[] keywords,
-            @NotNull byte[] inputText,
-            @NotNull Set<PDFont> pdFonts,
-            @NotNull boolean useStrict) {
+            String[] keywords,
+            byte[] inputText,
+            Set<PDFont> pdFonts,
+            boolean useStrict) {
         final String encodedInput = generateByteString(inputText);
         for (PDFont f : pdFonts) {
             if (Objects.isNull(f)) {
@@ -51,9 +50,9 @@ class TextStampRecognizer {
     }
 
     static boolean recognizePlain(
-            @NotNull String[] keywords,
-            @NotNull byte[] inputText,
-            @NotNull boolean useStrict
+            String[] keywords,
+            byte[] inputText,
+            boolean useStrict
     ) {
         for (String k : keywords) {
             if (checkDuplicate(new String(inputText), k, useStrict)) {
@@ -64,9 +63,9 @@ class TextStampRecognizer {
     }
 
     private static boolean checkDuplicate(
-            @NotNull String input,
-            @NotNull String keyword,
-            @NotNull boolean useStrict) {
+            String input,
+            String keyword,
+            boolean useStrict) {
         if (useStrict) {
             return input.equals(keyword);
         } else {
@@ -74,15 +73,15 @@ class TextStampRecognizer {
         }
     }
 
-    static boolean recognize(@NotNull String[] keywords,
-                             @NotNull byte[] inputText,
-                             @NotNull Set<PDFont> pdFonts,
-                             @NotNull boolean useStrict) {
+    static boolean recognize(String[] keywords,
+                             byte[] inputText,
+                             Set<PDFont> pdFonts,
+                             boolean useStrict) {
         return recognizePlain(keywords, inputText, useStrict) ||
                 recognizeWithFont(keywords, inputText, pdFonts, useStrict);
     }
 
-    private static String generateByteString(@NotNull byte[] bytes) {
+    private static String generateByteString(byte[] bytes) {
         final StringBuilder stringBuilder = new StringBuilder();
         for (byte b : bytes) {
             stringBuilder.append(b);
